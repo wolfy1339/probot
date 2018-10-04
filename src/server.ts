@@ -1,6 +1,7 @@
 import Logger from 'bunyan'
 import express from 'express'
 import path from 'path'
+import https from 'https'
 
 // Teach express to properly handle async errors
 // tslint:disable-next-line:no-var-requires
@@ -18,7 +19,7 @@ export const createServer = (args: ServerArgs) => {
   app.set('views', path.join(__dirname, '..', 'views'))
   app.get('/ping', (req, res) => res.end('PONG'))
 
-  return app
+  return https.createServer({ key: process.env.TLS_KEY, cert: process.env.TLS_CERT }, app);
 }
 
 export interface ServerArgs {
