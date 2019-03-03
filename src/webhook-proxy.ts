@@ -1,6 +1,5 @@
 import Logger from 'bunyan'
 // @ts-ignore
-// tslint:disable-next-line:no-implicit-dependencies
 import EventSource from 'eventsource' // This is needed for now to resolve error TS4023, until smee-client gets it's own types or get's rewritten in TypeScript.
 import SmeeClient = require('smee-client')
 
