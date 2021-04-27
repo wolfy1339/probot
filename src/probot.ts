@@ -93,10 +93,7 @@ export class Probot {
 
     this.webhooks = getWebhooks(this.state);
 
-    this.on = (eventNameOrNames, callback) => {
-      return this.webhooks.on(eventNameOrNames, callback);
-    };
-
+    this.on = this.webhooks.on;
     this.onAny = this.webhooks.onAny;
     this.onError = this.webhooks.onError;
 
