@@ -1,5 +1,5 @@
 import express from "express";
-import { WebhookEvent, Webhooks } from "@octokit/webhooks";
+import { EmitterWebhookEvent as WebhookEvent, Webhooks } from "@octokit/webhooks";
 import LRUCache from "lru-cache";
 import Redis from "ioredis";
 
@@ -43,7 +43,6 @@ export type State = {
 };
 
 export type ProbotWebhooks = Webhooks<
-  WebhookEvent,
   Omit<Context, keyof WebhookEvent>
 >;
 

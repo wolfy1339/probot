@@ -1,6 +1,6 @@
 import LRUCache from "lru-cache";
 import { Logger } from "pino";
-import { WebhookEvent } from "@octokit/webhooks";
+import { EmitterWebhookEvent as WebhookEvent } from "@octokit/webhooks";
 
 import { aliasLog } from "./helpers/alias-log";
 import { auth } from "./auth";
@@ -94,11 +94,6 @@ export class Probot {
     this.webhooks = getWebhooks(this.state);
 
     this.on = (eventNameOrNames, callback) => {
-      if (eventNameOrNames === "*") {
-        // @ts-ignore this.webhooks.on("*") is deprecated
-        return this.webhooks.onAny(callback);
-      }
-
       return this.webhooks.on(eventNameOrNames, callback);
     };
 
